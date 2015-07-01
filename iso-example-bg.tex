@@ -1,0 +1,53 @@
+\documentclass[a4paper,10pt]{ltxdockit}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc} % This has to go after the utf8 encoding and before babel
+\usepackage[english, bulgarian]{babel} % Using bg in babel enables our ISO 690:2011
+
+% Implements БДС ISO 690:2011.
+\usepackage[
+   backend=biber
+  ,style=iso-numeric
+  ,sorting=none % order by occurence
+  ,giveninits=true
+  ,autolang=other
+  ,sortlocale=bg_BG
+  ,bibencoding=UTF8
+  %,block=ragged
+]{biblatex}
+
+\bibliography{iso-example-bg}
+% Print author names as small caps
+\let\lastnameformat=\textsc
+
+% Print the bibliography list as [1], [2]...
+\DeclareFieldFormat{labelnumberwidth}{[#1]}
+\DeclareFieldFormat{shorthandwidth}{[#1]}
+
+\titlepage{%
+  title={БДС ISO 690:2011 за biblatex},
+  subtitle={Open an issue in github or submit a patch if something is not correct.},
+  url={https://github.com/vgvassilev/biblatex-iso690},
+  author={Michal Hoftich, adapted by Vassil Vassilev},
+  email={},
+  revision={0.1},
+  date={\today}}
+
+
+\begin{document}
+
+  \printtitlepage
+  \tableofcontents
+
+  \section{README}
+    DISCLAMER: We don't have exactly the original standard so we tried to be as close as possible to our knowledge. If there are missing things or inaccuracies please feel free to contact us in github (https://github.com/vgvassilev/biblatex-iso690). The bulgarian bibliography standard БДС ISO 690:2011 can be found in \cite{bds_iso_690}.
+
+  \section{Section2}
+    The purpose of this example is to demonstrate the generation of bibliography. It show how to generate BDS ISO 690:2011 compatible bibliography sorted by occurence in text. In addition we have used the information available in \cite{bglib}.
+
+    Here we can cite, тук можем цитираме \parencite{google}
+
+  \nocite{*} % // force generation of all bib entries.
+
+  \printbibliography[title={Библиография},heading={bibnumbered}]
+
+\end{document}
